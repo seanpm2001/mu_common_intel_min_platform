@@ -1278,10 +1278,9 @@ TestPointReadyToBootMtrrFunctional (
   EFI_STATUS  Status;
   BOOLEAN     Result;
 
-  // NEED TO ADD NEW BIT HERE
-  //if ((mFeatureImplemented[2] & TEST_POINT_BYTE2_END_OF_PEI_MTRR_FUNCTIONAL) == 0) {
-  //  return EFI_SUCCESS;
-  //}
+  if ((mFeatureImplemented[4] & TEST_POINT_BYTE4_READY_TO_BOOT_MTRR_CACHE_VALID) == 0) {
+    return EFI_SUCCESS;
+  }
 
   DEBUG ((DEBUG_INFO, "======== TestPointReadyToBootMtrrFunctional - Enter\n"));
   Result = TRUE;
@@ -1295,8 +1294,8 @@ TestPointReadyToBootMtrrFunctional (
     TestPointLibSetFeaturesVerified (
       PLATFORM_TEST_POINT_ROLE_PLATFORM_IBV,
       TEST_POINT_IMPLEMENTATION_ID_PLATFORM_DXE, // MU_CHANGE - StandaloneMm Support
-      2,
-      TEST_POINT_BYTE2_END_OF_PEI_MTRR_FUNCTIONAL
+      4,
+      TEST_POINT_BYTE4_READY_TO_BOOT_MTRR_CACHE_VALID
       );
   }
 
